@@ -1,0 +1,62 @@
+{
+  "groups": [
+    {
+      "name": "spring.redis",
+      "type": "org.example.common.redis.config.RedisProperties",
+      "sourceType": "org.example.common.redis.config.RedisProperties"
+    },
+    {
+      "name": "spring.redis.pool",
+      "type": "org.example.common.redis.config.RedisProperties$Pool",
+      "sourceType": "org.example.common.redis.config.RedisProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.redis.database",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.common.redis.config.RedisProperties"
+    },
+    {
+      "name": "spring.redis.host",
+      "type": "java.lang.String",
+      "sourceType": "org.example.common.redis.config.RedisProperties"
+    },
+    {
+      "name": "spring.redis.password",
+      "type": "java.lang.String",
+      "sourceType": "org.example.common.redis.config.RedisProperties"
+    },
+    {
+      "name": "spring.redis.pool.max-active",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.common.redis.config.RedisProperties$Pool"
+    },
+    {
+      "name": "spring.redis.pool.max-idle",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.common.redis.config.RedisProperties$Pool"
+    },
+    {
+      "name": "spring.redis.pool.max-wait",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.common.redis.config.RedisProperties$Pool"
+    },
+    {
+      "name": "spring.redis.pool.min-idle",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.common.redis.config.RedisProperties$Pool"
+    },
+    {
+      "name": "spring.redis.port",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.common.redis.config.RedisProperties"
+    },
+    {
+      "name": "spring.redis.timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.common.redis.config.RedisProperties"
+    }
+  ],
+  "hints": []
+}
