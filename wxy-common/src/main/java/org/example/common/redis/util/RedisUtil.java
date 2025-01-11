@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author wxy
+ */
 @Component
 public class RedisUtil {
 

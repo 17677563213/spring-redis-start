@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.example.common.redis.util.RedisUtil;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author wxy
+ */
 @RestController
 @RequestMapping("/api/test/redis")
 @RequiredArgsConstructor
