@@ -121,6 +121,50 @@ RedisTemplate 默认使用：
 - max-idle: 最大空闲连接
 - min-idle: 最小空闲连接
 
+### 6.3 分布式限流器
+项目实现了基于Redis的分布式限流器，支持滑动窗口算法：
+
+#### 实现原理
+```java
+public class SlidingWindowRateLimiter implements RateLimiter {
+    private final RedissonClient redissonClient;
+
+    public Boolean tryAcquire(String key, int limit, int windowSize) {
+        RRateLimiter rateLimiter = redissonClient.getRateLimiter(key);
+        rateLimiter.trySetRate(RateType.PER_CLIENT, limit, windowSize, RateIntervalUnit.SECONDS);
+        return rateLimiter.tryAcquire();
+    }
+}
+```
+
+#### 使用方式
+```java
+@Service
+@RequiredArgsConstructor
+public class ApiService {
+    private final RateLimiter rateLimiter;
+    
+    public void apiMethod() {
+        // 限制每个用户每分钟最多100次请求
+        if (!rateLimiter.tryAcquire("user:123", 100, 60)) {
+            throw new RateLimitException("请求太频繁");
+        }
+        // 业务逻辑
+    }
+}
+```
+
+#### 配置说明
+- limit: 时间窗口内允许的最大请求数
+- windowSize: 时间窗口大小（秒）
+- key: 限流器的唯一标识，可以基于用户ID、IP等
+
+#### 应用场景
+- API访问频率限制
+- 用户操作频率控制
+- 资源下载限制
+- 消息发送频率控制
+
 ## 7. 注意事项
 1. 确保 Redis 服务器已启动且可访问
 2. 配置文件中的密码项如果为空可以省略
